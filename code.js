@@ -1,5 +1,6 @@
 (function (window) {
   "use strict";
+  var MAX_PREVIEW_SWATCHES = 5;
 
   var palettes = [
     {
@@ -40,7 +41,7 @@
       var swatches = document.createElement("div");
       swatches.className = "swatches";
 
-      palette.colors.slice(0, 5).forEach(function (color) {
+      palette.colors.slice(0, MAX_PREVIEW_SWATCHES).forEach(function (color) {
         var swatch = document.createElement("span");
         swatch.className = "swatch";
         swatch.style.backgroundColor = color;
@@ -63,7 +64,7 @@
     var themeName = JSON.stringify("Brand Palette - " + palette.name);
 
     return "(function(){" +
-      "if(!Api || !Api.CreateTheme){throw new Error('Presentation API for themes is unavailable.');}" +
+      "if(!Api || !Api.CreateTheme){throw new Error('Presentation theme API unavailable. Check that you are running this plugin in a compatible ONLYOFFICE Presentation editor.');}" +
       "var colors=" + colors + ";" +
       "var theme = Api.CreateTheme(" + themeName + ", colors);" +
       "Api.GetPresentation().SetTheme(theme);" +
