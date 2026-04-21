@@ -66,7 +66,7 @@
     var themeName = JSON.stringify("Brand Palette - " + palette.name);
 
     return "(function(){" +
-      "if(!Api || !Api.CreateTheme){throw new Error('Presentation theme API unavailable.');}" +
+      "if(!Api || !Api.CreateTheme){throw new Error('Presentation theme API unavailable. Please use a compatible ONLYOFFICE Presentation editor.');}" +
       "var colors=" + colors + ";" +
       "var theme = Api.CreateTheme(" + themeName + ", colors);" +
       "Api.GetPresentation().SetTheme(theme);" +
@@ -75,7 +75,7 @@
 
   function applyPalette(palette) {
     if (!window.Asc || !window.Asc.plugin || typeof window.Asc.plugin.callCommand !== "function") {
-      setStatus("ONLYOFFICE plugin API is unavailable in this context.", true);
+      setStatus("ONLYOFFICE plugin API is unavailable. Open this plugin from ONLYOFFICE Presentation editor.", true);
       return;
     }
 
