@@ -76,14 +76,14 @@
       return;
     }
 
-    setStatus("Applying “" + palette.name + "”...");
+    setStatus("Applying \"" + palette.name + "\"...");
 
     window.Asc.plugin.callCommand(
       makeThemeScript(palette),
       false,
       true,
       function () {
-        setStatus("Applied “" + palette.name + "”.");
+        setStatus("Applied \"" + palette.name + "\".");
       }
     );
   }
