@@ -66,10 +66,11 @@
     var themeName = JSON.stringify("Brand Palette - " + palette.name);
 
     return "(function(){" +
-      "if(!Api || !Api.CreateTheme){throw new Error('Presentation theme API unavailable. Please use a compatible ONLYOFFICE Presentation editor.');}" +
+      "if(!Api || !Api.CreateTheme || !Api.GetPresentation){return {ok:false,error:'Presentation theme API unavailable. Please use a compatible ONLYOFFICE Presentation editor.'};}" +
       "var colors=" + colors + ";" +
       "var theme = Api.CreateTheme(" + themeName + ", colors);" +
       "Api.GetPresentation().SetTheme(theme);" +
+      "return {ok:true};" +
       "})();";
   }
 
@@ -81,14 +82,22 @@
 
     setStatus("Applying \"" + palette.name + "\"...");
 
-    window.Asc.plugin.callCommand(
-      makeThemeScript(palette),
-      SHOW_IN_HISTORY,
-      EXECUTE_IMMEDIATELY,
-      function () {
-        setStatus("Applied \"" + palette.name + "\".");
-      }
-    );
+    try {
+      window.Asc.plugin.callCommand(
+        makeThemeScript(palette),
+        SHOW_IN_HISTORY,
+        EXECUTE_IMMEDIATELY,
+        function (result) {
+          if (result && result.ok === false) {
+            setStatus(result.error || "Failed to apply selected palette.", true);
+            return;
+          }
+          setStatus("Applied \"" + palette.name + "\".");
+        }
+      );
+    } catch (error) {
+      setStatus(error && error.message ? error.message : "Failed to apply selected palette.", true);
+    }
   }
 
   window.Asc = window.Asc || {};
