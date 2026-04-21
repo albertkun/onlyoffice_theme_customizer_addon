@@ -1,6 +1,8 @@
 (function (window) {
   "use strict";
   var MAX_PREVIEW_SWATCHES = 5;
+  var SHOW_IN_HISTORY = false;
+  var EXECUTE_IMMEDIATELY = true;
 
   var palettes = [
     {
@@ -64,7 +66,7 @@
     var themeName = JSON.stringify("Brand Palette - " + palette.name);
 
     return "(function(){" +
-      "if(!Api || !Api.CreateTheme){throw new Error('Presentation theme API unavailable. Check that you are running this plugin in a compatible ONLYOFFICE Presentation editor.');}" +
+      "if(!Api || !Api.CreateTheme){throw new Error('Presentation theme API unavailable.');}" +
       "var colors=" + colors + ";" +
       "var theme = Api.CreateTheme(" + themeName + ", colors);" +
       "Api.GetPresentation().SetTheme(theme);" +
@@ -81,8 +83,8 @@
 
     window.Asc.plugin.callCommand(
       makeThemeScript(palette),
-      false,
-      true,
+      SHOW_IN_HISTORY,
+      EXECUTE_IMMEDIATELY,
       function () {
         setStatus("Applied \"" + palette.name + "\".");
       }
