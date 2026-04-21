@@ -1,0 +1,1 @@
+# onlyoffice_theme_customizer_addon
