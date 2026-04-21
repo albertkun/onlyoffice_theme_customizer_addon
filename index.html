@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Brand Palette Theme Customizer</title>
+  <style>
+    :root {
+      color-scheme: light dark;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      margin: 0;
+      padding: 16px;
+      background: #f5f7fa;
+      color: #1d2433;
+    }
+
+    h1 {
+      margin: 0 0 8px;
+      font-size: 18px;
+    }
+
+    p {
+      margin: 0 0 16px;
+      font-size: 13px;
+    }
+
+    .palette-list {
+      display: grid;
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    .palette-btn {
+      width: 100%;
+      border: 1px solid #d3dae6;
+      border-radius: 8px;
+      background: #ffffff;
+      color: inherit;
+      cursor: pointer;
+      padding: 10px;
+      text-align: left;
+      font-size: 13px;
+    }
+
+    .palette-btn:hover,
+    .palette-btn:focus {
+      border-color: #4a78ff;
+      outline: none;
+      box-shadow: 0 0 0 2px rgba(74, 120, 255, 0.15);
+    }
+
+    .swatches {
+      display: flex;
+      gap: 6px;
+      margin-top: 8px;
+    }
+
+    .swatch {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+    }
+
+    #status {
+      min-height: 20px;
+      font-size: 12px;
+      color: #2c5d2f;
+    }
+
+    #status.error {
+      color: #8b2323;
+    }
+  </style>
+</head>
+<body>
+  <h1>Theme Customizer</h1>
+  <p>Select a preset brand palette to apply it to your presentation theme.</p>
+
+  <div id="paletteList" class="palette-list" aria-label="Preset palettes"></div>
+  <div id="status" role="status" aria-live="polite"></div>
+
+  <script src="https://onlyoffice.github.io/sdkjs-plugins/v1/plugins.js"></script>
+  <script src="code.js"></script>
+</body>
+</html>

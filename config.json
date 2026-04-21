@@ -1,0 +1,24 @@
+{
+  "name": "Brand Palette Theme Customizer",
+  "guid": "asc.{9C3D9156-BC66-4F66-8D85-75A6CA7E0937}",
+  "baseUrl": "",
+  "variations": [
+    {
+      "description": "Apply preset brand color palettes to the current presentation",
+      "url": "index.html",
+      "icons": [],
+      "isViewer": false,
+      "EditorsSupport": [
+        "slide"
+      ],
+      "buttons": [
+        {
+          "text": "Close",
+          "primary": true
+        }
+      ],
+      "initDataType": "none",
+      "initData": ""
+    }
+  ]
+}
